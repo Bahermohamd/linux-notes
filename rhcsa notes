@@ -1,0 +1,76 @@
+**commands:
+ethtool -> get more infos about network profile
+ifconfig -> infos about interfaces
+partbrope -> refresh partaions scheme
+hostnamectl -> edit hostname
+grub2-setpass
+mdadm -> manage raid storage
+watch -> continue to refresh the output
+
+
+
+
+**RAID:
+raid0 -> stripping
+raid1 -> mirror
+raid5 -> stripping with distributed parity
+raid6 -> stripping with dual distributed parity
+raid10 -> (raid0,1)
+
+**RAID commands:
+mdadm
+mdadm --assemble --scan //start all stopped arrays
+mdadm --assemble /dev/md0 //start only md0
+mdadm -Q or --query /dev/md0
+mdadm -E or --examine
+deleteing raid:
+mdadm -S or --stop
+	then 
+mdadm --remove /dev/md0
+	finally 
+mdadm --zero-superblock /dev/sdb /dev/sda
+
+ 
+**lvm:
+1- craete physical volume from physical hard disk -> (pvcreate) 
+	pvcreate /dev/sdb /dev/sdc
+	check with (pvs or pvdisplay)
+	
+
+
+
+**mbr parts:
+1-partation table 64
+2-bootloader 446
+3-magic number 2
+
+
+
+
+**boot process ->>
+1-post bios -> power on self check for hardware
+2-bios -> search for bootable devices and compare it with it's setting
+3-load IPL(initial program loader) -> load and start  bootloader
+
+
+
+**bootloader -start-> kernel -start-> systemd/init
+
+
+**linux kernel -> kernel
+         |------> initramfs (which contains all drivers)
+
+
+###################
+# important files #
+###################
+
+/etc/sysconfig/grub -> grub default variables
+/etc/systemd/system -> systemd config files, originally located at /usr/lib/systemd/system
+note that the config in etc/systemd has the priority
+/etc/sysconfig/network-scripts -> setting for network profiles
+/etc/resolve.conf -> dns setting
+/etc/hosts -> locally resolved ip addresses
+/etc/nsswitch.conf -> set where to search for ip first (dns or hosts file)
+/etc/hostname -> hostname file
+

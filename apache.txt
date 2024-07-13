@@ -1,0 +1,42 @@
+apache wep server
+----------------------
+https 443	http 80
+8080 مش standard
+
+سيرفر مايكروسوفت iis عند ظهور اباتشي كان بيدعم ان السيرفر يشغل موقع واحد بس
+اباشي بيدعم وجود اكتر من موقع علي نفس السيرفر وده سبب شعبيته
+ظهر سنة 98
+يوجد عدد كبير من modules تساعد الاباتشي لدرجه انه يعتبر اكثر ويب سيرفر supported on the world
+وهذا ادي لكبر حجم الاباتشي نظرا لدعمه للعديد من اللغات والميزات الاخري وهذا  يؤدي لوجود احتمال اكبر لوجود ثغرات
+apache pkg on rh -> httpd
+apcahe on ubuntu and debian called apache2
+yum group called "basic web server" for apache on rh
+في حالة تسطيب httpd فإنها تعطي دعم ل ملفات http
+
+apache بيعمل serve للملفات الموجوده في مسار /var/www/html
+ويجب فتح ال firewall والسماح بالوصول له
+
+apache config -> /etc/httpd
+main file for apache config -> /etc/httpd/conf/httpd.conf
+
+-----------
+apache ممكن يعمل هوست لاكثر من ويب سايت الاساسي يسمي main server و الباقي يسمو virtual hosts
+--------------
+apache conf contains:
+
+-glopal conf تحتوي معلومات مثل اليوزر والمجموعات, البورت المخصص, الموديولات التكميلية
+-main server conf الملفات الموجوده علي /var/www/html
+-virtual host conf 
+--------------
+main srv conf:
+
+setting srv admin email
+setting srv name
+deny access بيمنع اللي هيستخدم الموقع انه يصل لل file system
+document root  هي الملفات اللي هاعملها serve
+directory indexاسم الصفحه اللي هنعرضها وامتدادها
+
+يمكن حماية صفحات معينة وتحديد من له صالحية الوصول لها من خلال htaccess and htpasswd
+logs -> /var/log/httpd
+
+----------------------

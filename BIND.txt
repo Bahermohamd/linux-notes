@@ -1,0 +1,19 @@
+BIND
+
+bind.chroot سيرفيس مختلفة عن bind
+لتجنب حدوث مشاكل بينهم يمكن عمل mask 
+وكذلم يمكن عمل soft link لملف chroot
+/etc/named -> /var/named/chroot/etc
+
+main config file (named.conf)
+
+port: 53/udp client listen using that port
+53/tcp
+master dns uses this port to comunicate with the slaves servers
+
+عند عمل اعداد لل dns نجعل السيرفر resolve من نفسه
+عن طريق وضع loopback address في خيار listen on port
+حيث يمكن جعل ال dns يعمل  resolve ل ips معينه فقط و ممكن نجعلها للجميع من خلال كتابة any
+allow cash query تسمح بعمل تخزين للاستعلامات 
+
+
